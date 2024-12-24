@@ -5,4 +5,3 @@ from client
 select client.FirstName, application.Sum
 from client
          join application;
-
