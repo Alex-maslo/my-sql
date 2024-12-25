@@ -70,14 +70,35 @@ order by model;
 
 # підрахувати кількість кожної марки
 
-select count(cars.model)
+select model, count(model)
 from cars
-where model = 'bmw';
+group by model
+order by count(model) desc;
+
 
 # знайти марку машин кількість яких найбільше
-#
+
+select model, count(model) as count
+from cars
+group by model
+order by count desc
+limit 1;
+
+
 # знайти марку машини в назві яких друга та передостання буква "a"
+select *
+from cars
+where model like '_a%a_';
+
 # знайти всі машини назва моделі яких більше за 8 символів
-#
-#
+select *
+from cars
+where length(model) > 8;
+
+
 # ***знайти машини ціна котрих більше ніж ціна середнього арифметичного всіх машин
+
+select *
+from cars
+where price > (select avg(price) from cars)
+order by price desc;
